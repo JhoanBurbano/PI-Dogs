@@ -1,7 +1,9 @@
 import React from "react";
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Main from "./components/Main";
-
+import Nav from "./components/Nav"
+import Home from './components/Home'
+import Create from "./components/Create";
 
 function App() {
   return (
@@ -10,8 +12,14 @@ function App() {
         <Route exact path='/'>
           <Main/>
         </Route>
-        <Route path='home'>
-          
+        </Switch>
+          <Nav/>
+        <Switch>
+        <Route path='/home'>
+          <Home/>
+        </Route>
+        <Route path='/create' >
+          <Create />
         </Route>
       </Switch>
     </BrowserRouter> 

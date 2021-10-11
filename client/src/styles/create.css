@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;600;700&display=swap');
+/* Container */
+.container{
+    margin: 1.875rem;
+    display: flex;
+    justify-content: space-around;
+}
+/* Form */
+img{
+    width: 100%;
+}
+input{
+    margin: 7px 0 10px;
+    padding: 6px;
+    border-radius: 7px;
+    border: 1px solid #212121;
+    width: 45%;
+    font-size: 14px;
+}
+.columninput{
+    margin-left: 10px;
+}
+.firstInput, .lastInput{
+    width: 96%;
+}
+h2{
+    text-align: center;
+    font-size: 27px;
+    font-weight: 500;
+    color: #212121;
+}
+.form{
+    padding: 10px 40px;
+    width: 30%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 18px -2px #546E7A;
+}
+/* Img */
+.imgContainer{
+    padding: 40px 0;
+    width: 25%;
+}
+/* Bttn */
+.bttn{
+    background-color: #43A047;
+    font-size: 18px;    font-weight: 600;
+    color: white;
+    width: 150px;  height: 40px;
+    border: none; border-radius: 10px;
+}

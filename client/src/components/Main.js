@@ -1,19 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import mainStyles from '../styles/main.module.css'
-console.log(mainStyles.background)
 
 export default function Main(){
     return (
-        /* El div Contenedor tiene la imagen */
+        /* The container has the img */
         <div className={mainStyles.background} >
-            {/* El boton dirige a la pagina principal (home) */}
+            {/* This button link home */}
             <Link to='/home'>
             <button className={mainStyles.bttn}>
-                Home
+                HOME
             </button>
             </Link>
-            {/* Un pequeño span que simula de footer (Dirige a mi Github) */}
+            {/* My github account in other page */}
             <span className={mainStyles.span}>Created by
                 <a className={mainStyles.reset} 
                 href='https://github.com/Xartiago' 
