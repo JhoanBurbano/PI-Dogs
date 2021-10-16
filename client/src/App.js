@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Main from "./components/Main";
 import Nav from "./components/Nav"
 import Home from './components/Home'
@@ -7,22 +7,22 @@ import Create from "./components/Create";
 
 function App() {
   return (
-     <BrowserRouter>
+    <BrowserRouter>
       <Switch>
         <Route exact path='/'>
-          <Main/>
+          <Main />
         </Route>
-        </Switch>
-          <Nav/>
-        <Switch>
+      </Switch>
+      <Nav />
+      <Switch>
         <Route path='/home'>
-          <Home/>
+          <Home />
         </Route>
         <Route path='/create' >
           <Create />
         </Route>
       </Switch>
-    </BrowserRouter> 
+    </BrowserRouter>
   );
 }
 

@@ -12,18 +12,18 @@ export default function Nav() {
             {/* Nav to home */}
             <Link to='/home' className={styles.reset}>
                 <div className={styles.home}>
-                    <img className={styles.img} src={Icon} alt='Icono' width='100%'/>
+                    <img className={styles.img} src={Icon} alt='Icono' width='100%' />
                     <span className={styles.padding}>Home</span>
                 </div>
             </Link>
             {/* Blank to my github */}
             <div>
-                <a 
-                href='https://github.com/Xartiago'
-                alt='Personal Mark'
-                target='_blank'
-                rel="noreferrer"
-                ><img className={styles.img2} src={personalMark} alt='personal Mark'/>
+                <a
+                    href='https://github.com/Xartiago'
+                    alt='Personal Mark'
+                    target='_blank'
+                    rel="noreferrer"
+                ><img className={styles.img2} src={personalMark} alt='personal Mark' />
                 </a>
             </div>
             {/* Nav to create new dog or breed */}

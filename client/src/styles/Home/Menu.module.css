@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;600;700&display=swap');
+/* Container */
+.container{
+    width: 20%;
+    height: 500px;
+    padding: 30px 15px;
+    border-radius: 20px;
+    box-shadow: -2px 0px 21px 5px rgba(86,86,86,0.25);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
