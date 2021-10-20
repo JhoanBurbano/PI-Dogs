@@ -12,13 +12,12 @@ function App() {
         <Route exact path='/'>
           <Main />
         </Route>
-      </Switch>
-      <Nav />
-      <Switch>
         <Route path='/home'>
+          <Nav />
           <Home />
         </Route>
         <Route path='/create' >
+          <Nav />
           <Create />
         </Route>
       </Switch>

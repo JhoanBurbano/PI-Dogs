@@ -5,7 +5,7 @@ import '../styles/create.css'
 /* Imgs */
 import Sparky from '../assets/icons/sparky.png'
 
-export default function Create() {
+const Create = () => {
     /* Form state */
     const [state, setState] = useState({
         name: '',
@@ -82,3 +82,5 @@ export default function Create() {
         </div>
     )
 }
+
+export default Create

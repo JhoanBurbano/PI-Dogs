@@ -7,7 +7,7 @@ import Filter from '../Menu/Filter'
 import Order from '../Menu/Order'
 
 
-export default function Menu() {
+const Menu = () => {
     return (
         <div className={Styles.container}>
             <OnSearch />
@@ -16,3 +16,5 @@ export default function Menu() {
         </div>
     )
 }
+
+export default Menu

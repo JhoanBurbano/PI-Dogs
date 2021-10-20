@@ -4,17 +4,16 @@ import { useState } from 'react'
 /* Styles */
 import Styles from '../../styles/Menu/onSearch.module.css'
 
-export default function OnSearch() {
+const OnSearch = () => {
 
     const [state, setState] = useState({
         search: ''
     })
-    console.log(state.search)
     const handleChange = ({ target: { name, value } }) => {
         setState({ ...state, [name]: value })
     }
-    return (
-        <div className={Styles.container} >
+    return(
+        <div className = { Styles.container } >
             <span>Search breed</span>
             <form>
                 <label className={Styles.label} >
@@ -28,6 +27,8 @@ export default function OnSearch() {
                     <button className={Styles.button}>Find</button>
                 </label>
             </form>
-        </div>
+        </div >
     )
 }
+
+export default OnSearch

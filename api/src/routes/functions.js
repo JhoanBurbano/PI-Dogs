@@ -3,7 +3,7 @@ const axios = require('axios')
 /* Api Key */
 const { API_KEY } = process.env;
 const api = 'https://api.thedogapi.com/v1/breeds?api_key='
-const { Dog, Mood, Op } = require('../db');
+const { Dog, Temperament, Op } = require('../db');
 
 /* Get all api dogs*/
 const getApiDogs = async () => {
@@ -23,7 +23,7 @@ const getApiDogs = async () => {
 const getDBDogs = async () => {
     return await Dog.findAll({
         include: {
-            model: Mood,
+            model: Temperament,
             attributes: ['name'],
             through: {
                 attributes: []
@@ -46,15 +46,15 @@ const getTemperaments = async () => {
         if(!dog.temperament){ // if is undefined 
             return dog.temperament // return me undefined
         }
-        const aux = dog.temperament.split(', ') // as the temperament for each dog is a texxt string we going to create an array by dogTemp
+        const aux = dog.temperament.split(', ') // as the temperament for each dog is a text string we going to create an array for each dogTemp
         return aux // return this array in getTemps
     })
-    const finalMoods = getTemps.flat() // all subArrays become in a single array
-    return finalMoods
+    const finalTemps = getTemps.flat() // all subArrays become in a single array
+    return finalTemps // [curious]
 }
 /* Set Moods */
 /* Here we clear the array that we push into de DB */
-const setMoods = async () =>{
+const setTemps = async () =>{
     let moods = await getTemperaments();
     const cleaning = new Set(moods) // clean the repeat values
     let final = [...cleaning].filter(Boolean) // clean all boleans (null, undefined, false, etc..) in the arr
@@ -63,5 +63,5 @@ const setMoods = async () =>{
 
 module.exports = {
     getAllDogs,
-    setMoods
+    setTemps
 }

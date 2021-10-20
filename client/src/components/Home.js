@@ -5,7 +5,7 @@ import Styles from '../styles/Home.module.css'
 import Menu from "./Home/Menu.js";
 import Cards from "./Home/Cards";
 
-export default function Home() {
+const Home = () => {
     return (
         <div className={Styles.container} >
             <Menu />
@@ -13,3 +13,5 @@ export default function Home() {
         </div>
     )
 }
+
+export default Home;

@@ -1,10 +1,10 @@
 /* Functions */
 const {
     getAllDogs,
-    setMoods
+    setTemps
 } = require('./functions.js')
 /* Get db Models */
-const { Dog, Mood, Op } = require('../db');
+const { Dog, Temperament, Op } = require('../db');
 
 /* getAppDogs */
 const getDogs = async (req, res) => {
@@ -27,14 +27,14 @@ const getDogs = async (req, res) => {
 /* Push all temperaments into DB */
 const getMoods = async (req, res) => {
     try {
-        const moods = await setMoods(); // give me all moods or temperaments
-        moods.forEach(mood => {    // we going to create by mood a tuple into the DB
-            Mood.findOrCreate({
-                where: { name: mood }
+        const temperaments = await setTemps(); // give me all moods or temperaments
+        temperaments.forEach(temp => {    // we going to create by mood a tuple into the DB
+            Temperament.findOrCreate({
+                where: { name: temp }
             })
         })
-        const allMoods = await Mood.findAll(); // bring in this const all moods 
-        res.status(200).json(allMoods); // 
+        const allTemps = await Temperament.findAll(); // bring in this const all moods 
+        res.status(200).json(allTemps); // 
     }
     catch (err) {
         res.send(400).json(err);
@@ -63,6 +63,7 @@ const createDog = async (req, res) => {
     try {
         const {
             name,
+            img,
             height,
             weight,
             lifeExp,
@@ -70,15 +71,15 @@ const createDog = async (req, res) => {
         } = req.body // Get from body form the information about this new dog
         const newDog = await Dog.create({ // we create the dog into the DB
             name,
+            img,
             height,
             weight,
             lifeExp
         })
-        console.log(req.body)
-        const dogsMoods = await Mood.findAll({ // We verify if this temperament(s) exists into the DB
+        const dogsMoods = await Temperament.findAll({ // We verify if this temperament(s) exists into the DB
             where: { name: temperament }
         })
-        newDog.addMood(dogsMoods);
+        newDog.addTemperament(dogsMoods);
         res.send('A new Dog has been added')
     }
     catch (err) {

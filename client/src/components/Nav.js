@@ -6,7 +6,7 @@ import styles from '../styles/nav.module.css'
 import Icon from '../assets/icons/ICONO.png'
 import personalMark from '../assets/icons/personalMark.png'
 
-export default function Nav() {
+const Nav = () => {
     return (
         <div className={styles.container}>
             {/* Nav to home */}
@@ -35,3 +35,5 @@ export default function Nav() {
         </div>
     )
 }
+
+export default Nav

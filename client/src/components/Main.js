@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import mainStyles from '../styles/main.module.css'
 
-export default function Main() {
+const Main = () => {
     return (
         /* The container has the img */
         <div className={mainStyles.background} >
@@ -22,3 +22,5 @@ export default function Main() {
         </div>
     )
 }
+
+export default Main;

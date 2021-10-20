@@ -1,12 +1,19 @@
+/* Front */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.module.css';
 import App from './App';
+/* Styles */
+import './styles/index.module.css';
+/* React redux + store */
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
