@@ -20,9 +20,10 @@
 }
 /* Button */
 .button{
+    letter-spacing: 1px;
     position: relative;
     top: -41px;
-    left: 153px;
+    left: 133px;
     width: 80px;  height: 28px;
     color: white;
     font-weight: 700;

@@ -22,13 +22,7 @@ const getApiDogs = async () => {
 /* Get data base dogs */
 const getDBDogs = async () => {
     return await Dog.findAll({
-        include: {
-            model: Temperament,
-            attributes: ['name'],
-            through: {
-                attributes: []
-            }
-        }
+        include: Temperament
     })
 }
 /* get All Dogs */

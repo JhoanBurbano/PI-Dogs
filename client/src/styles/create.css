@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;600;700&display=swap');
 /* Container */
 .container{
-    margin: 1.875rem;
+    margin: 20px;
     display: flex;
     justify-content: space-around;
 }
@@ -9,7 +9,7 @@
 img{
     width: 100%;
 }
-input{
+input, select{
     margin: 7px 0 10px;
     padding: 6px;
     border-radius: 7px;
@@ -18,22 +18,75 @@ input{
     font-size: 14px;
 }
 /* checkbox inputs */
-.checkbox{
-    width: 20px;
-}
 .columninput{
     margin-left: 10px;
 }
 
 h2{
+    padding: 10px;
     text-align: center;
     font-size: 27px;
     font-weight: 500;
     color: #212121;
 }
+.boxContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.box1{
+    width: 55%;
+}
+.box2{
+    margin-bottom: 20px;
+    display: block;
+    padding: 10px;
+    width: 40%;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.divPerTemp{
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    background-color: #00695C;
+    padding: 8px 9px;
+}
+.info2{
+    margin-left: 10px;
+    font-size: 11px;
+    color: #00ACC1;
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+    padding-left: 10px;
+}
+.info{
+    margin-left: 10px;
+    font-size: 11px;
+    color: #F44336;
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+    padding-left: 10px;
+}
+.advise{
+    margin-left: 10px;
+    font-size: 11px;
+    color: #F57C00;
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+    padding-left: 10px;
+}
+.divPerTemp span{
+    margin-left: 25px;
+}
+.divPerTemp button{
+    width: 15px;
+    position: absolute;
+    border: none;
+    border-radius: 9px;
+    font-weight: 900;
+    background-color: white;
+    cursor: pointer;
+}
 .form{
     padding: 10px 40px;
-    width: 30%;
+    width: 50%;
     border-radius: 20px;
     box-shadow: 5px 5px 18px -2px #546E7A;
 }
@@ -44,7 +97,7 @@ h2{
 }
 /* Bttn */
 .bttn{
-    margin-top: 80px;
+    margin: 20px 0;
     background-color: #43A047;
     font-size: 18px;    font-weight: 600;
     color: white;

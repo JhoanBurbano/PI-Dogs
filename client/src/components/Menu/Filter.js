@@ -13,7 +13,7 @@ const Filter = ({ temperaments, bringTemperaments, filterBy }) => {
             return allTemps
         };
         bringTemps()
-    }, [])
+    }, [bringTemperaments])
     const filterDogs = (e) =>{
         filterBy(e.target.value)
     }

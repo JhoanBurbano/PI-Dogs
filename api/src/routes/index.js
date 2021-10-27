@@ -14,7 +14,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/dogs', getDogs)
-router.get('/temperament', getMoods)
+router.get('/temperament', getMoods) // <-- []
 router.get('/dogs/:id', getIdDog)
 router.post('/dogs', createDog)
 

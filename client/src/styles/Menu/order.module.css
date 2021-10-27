@@ -15,8 +15,9 @@
     width: 80px; height: 80px;
     border: none;
     border-radius: 40px;
+    font-weight: 500;
     font-size: 14px;
-    background-color: #81D4FA;
+    background-color: #80CBC4;
     cursor: pointer;
 }
 .bttns:hover{

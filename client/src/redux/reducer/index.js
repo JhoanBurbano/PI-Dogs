@@ -1,22 +1,30 @@
 /* Action types */
 import {
+    DOG,
     FILTER,
     GETDOGS,
     GETTEMPS,
     HEAVY,
     LIGHT,
     ORDERA,
-    ORDERD
+    ORDERD,
+    PAGES,
+    SEARCH,
+    SHOWPAGE
 } from '../actionsType'
 /* State */
 const initialState = {
     temperaments: [],
     dogs: [],
-    auxFilter: []
+    auxFilter: [],
+    dog: {},
+    pages: [],
+    pageToShow: []
 }
 
 export default function rootReducer(state = initialState, { type, payload }) {
-    const auxDogs = state.dogs.map(dog => dog)
+    let auxDogs = state.dogs.map(dog => dog)
+    let auxiliar = state.auxFilter
     switch (type) {
         case GETDOGS: /* Bring dogs  */
             return {
@@ -29,15 +37,51 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 ...state,
                 temperaments: payload
             }
-        case FILTER:
-            const dogs = state.auxFilter.filter(dog => {
+        case PAGES:
+            let newPages = []
+            for (let i = 0; i < state.dogs.length; i += 8) { 
+                let slice = state.dogs.slice(i, i + 8)
+                newPages.push(slice)
+            }
+            return {
+                ...state,
+                pages: newPages
+            }
+        case SHOWPAGE:
+            let show = state.pages[payload]
+            return {
+                ...state,
+                pageToShow: show
+            }
+        case DOG: /* Card Description */
+            const findDog = auxiliar.find(dog => {
+                if (dog.id === payload)
+                    return dog
+            })
+            return {
+                ...state,
+                dog: findDog
+            }
+        case SEARCH: /* Search dog by name */
+            const dog = auxiliar.filter(dog => {
+                if (payload === '') return dog
+                if (payload && dog.name.toLowerCase().includes(payload.toLowerCase())) {
+                    return dog
+                }
+            })
+            return {
+                ...state,
+                dogs: dog,
+                begin: 0
+            }
+        case FILTER: // Filter dogs by specific condition
+            const dogs = auxiliar.filter(dog => {
                 if (payload.toLowerCase() === 'api' && !dog.createInDB) return dog
-                if (payload.toLowerCase() === 'data base' && dog.createInDB === true) return  dog
-                if (dog.temperament && dog.temperament.includes(payload)) return dog
+                if (payload.toLowerCase() === 'data base' && dog.createdInDB === true) return dog
+                if (dog.temperament && dog.temperament.toLowerCase().includes(payload)) return dog
                 return null
             }
             ).filter(Boolean)
-            console.log(state.auxFilter)
             return {
                 ...state,
                 dogs: dogs
@@ -50,7 +94,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
             });
             return {
                 ...state,
-                dogs: orderD
+                dogs: orderD,
             }
         case ORDERA: /* Z-A */
             const orderA = auxDogs.sort((prev, post) => {
@@ -60,7 +104,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
             });
             return {
                 ...state,
-                dogs: orderA
+                dogs: orderA,
             }
         case LIGHT: /* lighter to heavier */
             const orderLight = auxDogs.sort((prev, post) => {
@@ -70,17 +114,17 @@ export default function rootReducer(state = initialState, { type, payload }) {
             })
             return {
                 ...state,
-                dogs: orderLight
+                dogs: orderLight,
             }
         case HEAVY: /* heavier to lighter */
             const orderHeavy = auxDogs.sort((prev, post) => {
                 let lighterH = Math.round(prev.weight.split('-').reduce((previ, poste) => parseInt(previ) + parseInt(poste) / 2))
                 let heavierH = Math.round(post.weight.split('-').reduce((previ, poste) => parseInt(previ) + parseInt(poste) / 2))
-                return lighterH + heavierH
+                return heavierH - lighterH
             })
             return {
                 ...state,
-                dogs: orderHeavy
+                dogs: orderHeavy,
             }
         default:
             return state

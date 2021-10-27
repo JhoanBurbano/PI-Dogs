@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import Nav from "./components/Nav"
 import Home from './components/Home'
 import Create from "./components/Create";
+import CardDetail from "./components/Home/CardDetail";
 
 function App() {
   return (
@@ -11,6 +12,10 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <Main />
+        </Route>
+        <Route path='/home/:id'>
+          <Nav />
+          <CardDetail />
         </Route>
         <Route path='/home'>
           <Nav />

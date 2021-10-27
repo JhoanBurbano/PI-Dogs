@@ -29,8 +29,9 @@ const getMoods = async (req, res) => {
     try {
         const temperaments = await setTemps(); // give me all moods or temperaments
         temperaments.forEach(temp => {    // we going to create by mood a tuple into the DB
+            let aux = temp.toLowerCase()
             Temperament.findOrCreate({
-                where: { name: temp }
+                where: { name: aux }
             })
         })
         const allTemps = await Temperament.findAll(); // bring in this const all moods 
@@ -59,28 +60,31 @@ const getIdDog = async (req, res) => {
 /* Create a new dog */
 /* The data of this dog we must send to the DB */
 const createDog = async (req, res) => {
-    console.log(req.body)
     try {
         const {
             name,
             img,
-            height,
-            weight,
+            minHeight,
+            maxHeight,
+            minWeight,
+            maxWeight,
             lifeExp,
             temperament
         } = req.body // Get from body form the information about this new dog
         const newDog = await Dog.create({ // we create the dog into the DB
             name,
             img,
-            height,
-            weight,
+            minHeight,
+            maxHeight,
+            minWeight,
+            maxWeight,
             lifeExp
         })
-        const dogsMoods = await Temperament.findAll({ // We verify if this temperament(s) exists into the DB
-            where: { name: temperament }
-        })
-        newDog.addTemperament(dogsMoods);
-        res.send('A new Dog has been added')
+        for (let i = 0; i < temperament.length; i++) {
+            console.log(temperament[i])
+            newDog.addTemperament(await Temperament.findOne({ where: { name: temperament[i] } }))        
+        }
+        res.send(newDog)
     }
     catch (err) {
         console.log(err)
